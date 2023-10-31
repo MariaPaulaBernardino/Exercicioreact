@@ -7,4 +7,5 @@ export const GlobalStyle = createGlobalStyle`
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
+    
 `

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const ListWrapper = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
   background-color: #B0C4DE;
   padding: 20px;
   border: 1px solid #4682B4;

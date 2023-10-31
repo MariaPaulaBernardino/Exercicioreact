@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
   background-color: #B0C4DE;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
   padding: 20px;
   border: 1px solid #4682B4;
   border-radius: 5px;

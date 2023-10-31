@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ContatoForm from '../components/Form/ContatoForm';
 import ContatoList from '../components/List/ContatoList';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer'; 
 import { GlobalStyle } from '../global/globalStyle';
 
 function Home() {
@@ -31,20 +33,24 @@ function Home() {
   };
 
   const handleSaveContact = (editedContact) => {
-    setContatos([...contatos, editedContact]); 
+    setContatos([...contatos, editedContact]);
     setContatoEmEdicao(null);
   };
 
   return (
     <>
       <GlobalStyle />
-      <div>
-        <ContatoForm onAddContact={handleAddContact} contatoEmEdicao={contatoEmEdicao} setContatoEmEdicao={setContatoEmEdicao} onSaveContact={handleSaveContact} />
-        <ContatoList
-          contatos={contatos}
-          onEditContact={handleEditContact}
-          onDeleteContact={handleDeleteContact}
-        />
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Header />
+        <div style={{ flex: 1 }}>
+          <ContatoForm onAddContact={handleAddContact} contatoEmEdicao={contatoEmEdicao} setContatoEmEdicao={setContatoEmEdicao} onSaveContact={handleSaveContact} />
+          <ContatoList
+            contatos={contatos}
+            onEditContact={handleEditContact}
+            onDeleteContact={handleDeleteContact}
+          />
+        </div>
+        <Footer />
       </div>
     </>
   );
