@@ -1,11 +1,11 @@
 import React from 'react';
-import { ListWrapper, ListItem, ListButton } from '../List/stylesList';
+import { ListWrapper, ListItem, EditButton, DelButton } from '../List/stylesList';
 
 function ContatoList({ contatos, onEditContact, onDeleteContact }) {
   return (
     <ListWrapper>
       <h2>Lista de Contatos</h2>
-      <ul>
+      <div>
         {contatos.map((contato, index) => (
           <ListItem key={index}>
             <span>
@@ -15,12 +15,12 @@ function ContatoList({ contatos, onEditContact, onDeleteContact }) {
               <strong>Observações:</strong> {contato.observacoes}
             </span>
             <div>
-              <ListButton onClick={() => onEditContact(contato)}>Editar</ListButton>
-              <ListButton onClick={() => onDeleteContact(contato)}>Excluir</ListButton>
+              <EditButton onClick={() => onEditContact(contato)}>Editar</EditButton>
+              <DelButton onClick={() => onDeleteContact(contato)}>Excluir</DelButton>
             </div>
           </ListItem>
         ))}
-      </ul>
+      </div>
     </ListWrapper>
   );
 }

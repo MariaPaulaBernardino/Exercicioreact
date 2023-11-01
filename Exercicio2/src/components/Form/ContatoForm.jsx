@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FormWrapper, FormInput, FormButton, ClearButton } from '../Form/stylesForm';
+import { FormWrapper, FormInput, FormButton, ClearButton,} from '../Form/stylesForm';
 
 function ContatoForm({ onAddContact, contatoEmEdicao, setContatoEmEdicao, onSaveContact }) {
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
   const [temWhatsapp, setTemWhatsapp] = useState(false);
   const [observacoes, setObservacoes] = useState('');
-  const [error, setError] = useState('');
-
+  
   useEffect(() => {
     if (contatoEmEdicao) {
       setNome(contatoEmEdicao.nome);
@@ -25,11 +24,7 @@ function ContatoForm({ onAddContact, contatoEmEdicao, setContatoEmEdicao, onSave
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (nome.trim() === '' || telefone.trim() === '') {
-      setError('Nome e telefone são campos obrigatórios.');
-      return; 
-    }
-
+  
     const newContact = {
       nome,
       telefone,
@@ -67,17 +62,18 @@ function ContatoForm({ onAddContact, contatoEmEdicao, setContatoEmEdicao, onSave
           type="text"
           placeholder="Nome"
           value={nome}
-          onChange={(e) => setNome(e.target.value)}
+          onChange={(e) => setNome(e.target.value)} required
         />
         <FormInput
           type="number"
           placeholder="Telefone"
           value={telefone}
-          onChange={(e) => setTelefone(e.target.value)}
+          onChange={(e) => setTelefone(e.target.value)} required
         />
         <label>
           Tem Whatsapp:
           <FormInput
+          id="check-box"
             type="checkbox"
             checked={temWhatsapp}
             onChange={() => setTemWhatsapp(!temWhatsapp)}
@@ -91,7 +87,6 @@ function ContatoForm({ onAddContact, contatoEmEdicao, setContatoEmEdicao, onSave
         />
         <FormButton type="submit">{contatoEmEdicao ? 'Salvar' : 'Adicionar'}</FormButton>
         <ClearButton type="reset" onClick={reset}>Limpar</ClearButton>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
       </form>
     </FormWrapper>
   );
